@@ -1,10 +1,24 @@
+
+
+安装证书：
+运行：certmgr.msc
+选择 个人-》证书 
+菜单栏：  操作-》所有任务-》导入
+ca.crt https 然后重启chrome 浏览器。 不会https爆红.
+---------------------------------
 windows:
 npm install websocket
 node chatserver.js
 https://my1.cow8.cn:6503/   此链接只用于探明是否ok.6503只用于websocket.
------
+---------------------------------
 client:
 
 python -m http.myssl
 
-https://my1.cow8.cn:1443
+https://my1.cow8.cn:1443  
+chrome 打开两个上面链接
+
+分别输入u1  u2 点击login
+
+在u1中点击u2 就可以视频聊天了。
+---------------------------------

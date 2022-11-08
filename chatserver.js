@@ -35,8 +35,20 @@ var WebSocketServer = require('websocket').server;
 // HTTPS connections.
 
 
-const keyFilePath = "certs/private.key";
-const certFilePath = "certs/fullchain.crt";
+//const keyFilePath = "certs/private.key";
+//const certFilePath = "certs/fullchain.crt";
+
+//csr签名法: https会爆红
+//const keyFilePath = "pcerts/server.key";
+//const certFilePath = "pcerts/ca-server-bundle.crt";
+//const certFilePath = "pcerts/server.crt";
+//const certFilePath = "pcerts/full.crt";
+
+//ext签名法 chrome 无爆红https
+const keyFilePath = "ccerts/server.key";
+const certFilePath = "ccerts/server.crt";
+
+//以上三种证书均可用
 
 // Used for managing the text chat user list.
 
