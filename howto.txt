@@ -1,0 +1,10 @@
+windows:
+npm install websocket
+node chatserver.js
+https://my1.cow8.cn:6503/   此链接只用于探明是否ok.6503只用于websocket.
+-----
+client:
+
+python -m http.myssl
+
+https://my1.cow8.cn:1443
