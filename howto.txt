@@ -1,5 +1,15 @@
+switch(msg.type){
+"type":"new-ice-candidate"
+"type":"video-answer"
+}
+createPeerConnection
+myPeerConnection = new RTCPeerConnection
+handleICECandidateEvent
 
 
+"candidate":{"candidate":"candidate:2607659529 1 udp 2122260223 172.29.224.1 54758 typ host generation 0 ufrag vJ0W network-id 1","sdpMid":"0","sdpMLineIndex":0}}
+
+----------------
 安装证书：
 运行：certmgr.msc
 选择 个人-》证书 

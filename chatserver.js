@@ -55,13 +55,23 @@ const certFilePath = "ccerts/server.crt";
 var connectionArray = [];
 var nextID = Date.now();
 var appendToMakeUnique = 1;
-
+var fs = require("fs");
+var logname = "slog.txt";
+if(fs.existsSync(logname)){
+  fs.unlinkSync(logname);
+}
 // Output logging information to console
 
 function log(text) {
   var time = new Date();
-
-  console.log("[" + time.toLocaleTimeString() + "] " + text);
+  var lgstr = "[" + time.toLocaleTimeString() + "] " + text+"\n"
+  console.log(lgstr);//dick \n
+  
+  fs.writeFile(logname,lgstr,{flag: "a"},(err)=>{
+    if(err) {
+        console.log('writeLogError:',err);
+    }
+  })
 }
 
 // If you want to implement support for blocking specific origins, this is

@@ -36,15 +36,48 @@ var clientID = 0;
 // https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamConstraints
 // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 //
+//dick35
 
 var mediaConstraints = {
   audio: true,            // We want an audio track
-  video: {
+  video: {    
     aspectRatio: {
       ideal: 1.333333     // 3:2 aspect is preferred
     }
   }
 };
+
+async function getDevice(){  
+  var stream=null
+  var devices=null
+  try{
+      stream = await navigator.mediaDevices.getUserMedia( {video:true, audio:true})
+      devices = await navigator.mediaDevices.enumerateDevices()
+  }catch(err){
+      console.log("cmaera:",err)
+  }
+  //console.log('devices:',devices);
+  for (const mediaDeviceInfo of devices) {
+          const {deviceId, kind, label} = mediaDeviceInfo;
+          var value={}
+          value.deviceId = deviceId
+          value.kind = kind
+          value.label = label
+          //console.log(deviceId, kind, label);
+          //if( kind=="videoinput"){
+          if( kind=="videoinput" && -1!=label.indexOf('OBS') ){            
+            console.log(deviceId, kind, label);
+            mediaConstraints.video.deviceId=deviceId;
+            break;
+          }
+          //else if( kind=="audioinput" && "communications" != deviceId ){
+          //    this.audioDevices.set(deviceId,value);
+          //}
+  }
+}
+getDevice()
+//end dick35
+
 
 var myUsername = null;
 var targetUsername = null;      // To store username of other peer
@@ -510,7 +543,7 @@ async function invite(evt) {
 
     // Get access to the webcam stream and attach it to the
     // "preview" box (id "local_video").
-
+     
     try {
       webcamStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
       document.getElementById("local_video").srcObject = webcamStream;
